@@ -1,5 +1,5 @@
 import pytest
-from test_mara.inventario import Inventario
+from inventario import Inventario
 
 @pytest.fixture
 def inv():
@@ -7,9 +7,9 @@ def inv():
 
 def test_registrar_producto(inv):
     inv.registrar("Camisa", 50)
-    assert inv.consultar("Camisa") is not None
+    assert "Camisa" in inv.productos
 
-def test_consultar_producto_especifico(inv):
+def test_consultar_producto(inv):
     inv.registrar("Camisa", 50)
     producto = inv.consultar("Camisa")
     assert producto["nombre"] == "Camisa"
